@@ -11,6 +11,11 @@ Rails.application.routes.draw do
   get '/applications', to: 'apps#index'
   get '/applications/:token', to: 'apps#show'
   patch '/applications/:token', to: 'apps#update'
+
+  post '/applications/:token/chats/', to: 'chats#create'
+  get '/applications/:token/chats', to: 'chats#index'
+  # get '/applications/:token', to: 'chats#show'
+  # patch '/applications/:token', to: 'chats#update'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

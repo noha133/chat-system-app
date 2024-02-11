@@ -1,3 +1,3 @@
 class App < ApplicationRecord
-    has_many :apps
+    has_many :chats
 end
