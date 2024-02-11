@@ -1,0 +1,25 @@
+version: '3'
+services:
+  db:
+    image: mysql:5.7
+    container_name: sql_container
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=dev
+    ports:
+      - '3307:3307'
+    volumes:
+      - mysql_data:/var/lib/mysql
+  web:
+    build: .
+    image: test_image
+    container_name: web_container
+    ports:
+      - '3000:3000'
+    volumes: 
+            - ".:/app"
+    depends_on:
+      - db
+
+volumes:
+  mysql_data:
