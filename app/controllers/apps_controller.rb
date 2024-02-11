@@ -32,7 +32,9 @@ class AppsController < ApplicationController
     if @application.update(app_params)
       render json: @application, status: 200
     else
-      render :edit
+      render json: {
+        error: "App Not Found"
+      }
     end
   end
   
