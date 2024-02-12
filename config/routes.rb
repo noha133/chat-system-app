@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   post '/applications/:token/chats/:chat_number/messages', to: 'messages#create'
   get '/applications/:token/chats/:chat_number/messages', to: 'messages#index'
 
+  get '/messages/:q', to: 'search#search_message'
+
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
