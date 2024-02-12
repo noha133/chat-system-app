@@ -8,7 +8,8 @@ Rails.application.routes.draw do
   post '/applications/:token/chats/', to: 'chats#create'
   get '/applications/:token/chats', to: 'chats#index'
 
-  post '/applications/:token/chats/:chat_number/messages/create', to: 'messages#create'
+  post '/applications/:token/chats/:chat_number/messages', to: 'messages#create'
+  get '/applications/:token/chats/:chat_number/messages', to: 'messages#index'
 
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
