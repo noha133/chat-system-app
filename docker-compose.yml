@@ -10,19 +10,7 @@ services:
       - '3307:3307'
     volumes:
       - mysql_data:/var/lib/mysql
-  web:
-    build: .
-    image: chat_system_rails_image
-    container_name: web_container
-    ports:
-      - '3000:3000'
-    volumes: 
-            - ".:/app"
-    depends_on:
-      - db
-    command: >
-      /bin/sh -c "
-      rm -f /app/tmp/pids/server.pid && rails s -b '0.0.0.0'"
+
 
   elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch:7.17.18
@@ -33,6 +21,34 @@ services:
     ports:
       - '9200:9200'
       - '9300:9300'
+    
+  redis:
+    image: redis:6.2-alpine
+    restart: always
+    container_name: redis_container
+    ports:
+      - 6379:6379
+    command: redis-server --save 20 1 --loglevel warning --requirepass eYVX7EwVmmxKPCDmwMtyKVge8oLd2t81
+  web:
+    build: .
+    image: chat_system_rails_image
+    container_name: web_container
+    ports:
+      - '3000:3000'
+    environment:
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+      REDIS_PASSWORD: eYVX7EwVmmxKPCDmwMtyKVge8oLd2t81
+    volumes: 
+            - ".:/app"
+    depends_on:
+      - db
+      - redis
+    command: >
+      /bin/sh -c "
+      rm -f /app/tmp/pids/server.pid && rails s -b '0.0.0.0'"
+
+
 
 
 volumes:

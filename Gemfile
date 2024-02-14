@@ -19,6 +19,8 @@ gem "bootsnap", require: false
 
 gem 'elasticsearch-model'
 gem 'elasticsearch-rails'
+gem 'redis'
+# gem 'sidekiq'
 
 
 
@@ -32,3 +34,5 @@ group :development do
 end
 
 
+
+gem "sidekiq", "~> 7.2"

@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  require 'sidekiq/web'
+  mount Sidekiq::Web => '/sidekiq'
 
   post '/applications', to: 'apps#create'
   get '/applications', to: 'apps#index'
@@ -12,6 +14,8 @@ Rails.application.routes.draw do
   get '/applications/:token/chats/:chat_number/messages', to: 'messages#index'
 
   get '/applications/:token/chats/:chat_number/messages/search/:q', to: 'search#search_message'
+
+
 
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
