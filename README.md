@@ -1,24 +1,18 @@
-# README
+# Ruby on Rails API App with Dokcer using Redis, Sidekiq, Mysql and Elastic Search
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## This application serves as a chat API designed to facilitate communication between different applications
 
-Things you may want to cover:
+# Requirments
+- Docker
+- Docker Compose
 
-* Ruby version
+## Installation
 
-* System dependencies
+To set up the application, follow these steps:
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+1. Clone the repository:
+   git clone <repository_url>
+2. Navigate to the project directory:
+   cd <project_directory>
+3. Run the following command :
+   docker-compose --build
