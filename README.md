@@ -3,8 +3,7 @@
 ## This application serves as a chat API designed to facilitate communication between different applications
 
 
-#Prerequisites
-Before getting started, ensure that you have the following dependencies installed:
+#Requirments
 
 Docker
 Docker Compose
