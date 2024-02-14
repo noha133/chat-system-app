@@ -1,4 +1,5 @@
-# Ruby on Rails API running on Dokcer using Redis, Sidekiq, Mysql, Elastic Search
+# Ruby on Rails API App with Dokcer using Redis, Sidekiq, Mysql and Elastic Search
+This README provides an overview of a Ruby on Rails API application that utilizes Docker for containerization. It includes Redis and Sidekiq for background job processing. The application also integrates with MySQL as the database and Elasticsearch for efficient search .
 
 ## Chat app API to send messages between applications 
 
