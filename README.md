@@ -2,8 +2,7 @@
 
 ## This application serves as a chat API designed to facilitate communication between different applications
 
-
-#Requirments
+# Requirments
 
 Docker
 Docker Compose
