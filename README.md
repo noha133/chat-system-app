@@ -1,7 +1,6 @@
-# README
+# Ruby on Rails API running on Dokcer using Redis, Sidekiq, Mysql, Elastic Search
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Chat app API to send messages between applications 
 
 Things you may want to cover:
 
