@@ -4,6 +4,12 @@ This README provides an overview of a Ruby on Rails API application that utilize
 ## This application serves as a chat API designed to facilitate communication between different applications
 The API can be used to create applications, chats, send messages, retrieve messages, and perform various chat-related operations.
 
+#Prerequisites
+Before getting started, ensure that you have the following dependencies installed:
+
+Docker
+Docker Compose
+
 Things you may want to cover:
 
 * Ruby version
