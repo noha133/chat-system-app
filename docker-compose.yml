@@ -2,7 +2,7 @@ version: '3'
 services:
   db:
     image: mysql:5.7
-    container_name: sql_container
+    container_name: mysql_container
     environment:
       - MYSQL_ROOT_PASSWORD=root
       - MYSQL_DATABASE=dev
@@ -47,6 +47,16 @@ services:
     command: >
       /bin/sh -c "
       rm -f /app/tmp/pids/server.pid && rails s -b '0.0.0.0'"
+
+  sidekiq:
+    build:
+      context: .
+    container_name: sidekiq_container
+    command: bundle exec sidekiq 
+    links:
+      - db
+      - redis
+
 
 
 
