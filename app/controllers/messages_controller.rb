@@ -3,8 +3,24 @@ class MessagesController < ApplicationController
       token = params[:token]
       chat_number = params[:chat_number]
       text = params[:text]
-      MessageJob.perform_async(token, chat_number, text)
-      render json: { status: "created" }, status: :ok
+      application = App.find_by(token: token)
+      if application
+          chat = Chat.find_by(app: application ,chat_number: chat_number)
+          if chat
+            key = chat.id
+            key = key.to_s
+            # redis = Redis.new(url: 'redis://redis_container:6379')
+            message_number = ::REDIS.incr(key)
+            MessageJob.perform_async(message_number,chat.id, text)
+            render json: { message_number: message_number }, status: :created
+          else
+            render json: { error: 'Chat not found' }, status: :not_found
+          end
+        else
+          render json: { error: 'App not found' }, status: :not_found
+
+      end
+      
     end
 
 

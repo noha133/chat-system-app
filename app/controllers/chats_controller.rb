@@ -1,3 +1,4 @@
+
 class ChatsController < ApplicationController
   def index
     application = App.find_by(token: params[:token])
@@ -18,9 +19,15 @@ class ChatsController < ApplicationController
 
     token = params[:token]
     text = params[:text]
-    ChatJob.perform_async(token, text)
-    render json: { status: "created" }, status: :created
-
+    application = App.find_by(token: token)
+    if application
+      key = application.id
+      key = key.to_s
+      @redis = Redis.new(url: 'redis://redis_container:6379')
+      chat_number = @redis.incr(key)
+      ChatJob.perform_async(chat_number, application.id)
+      render json: { status: "created" , chat_number: chat_number}, status: :created
+    end
   end
 
   def update
