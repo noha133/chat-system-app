@@ -20,6 +20,7 @@ gem "bootsnap", require: false
 gem 'elasticsearch-model'
 gem 'elasticsearch-rails'
 gem 'redis'
+gem 'sidekiq-cron'
 # gem 'sidekiq'
 
 

@@ -58,7 +58,7 @@ services:
       - elasticsearch
       - sidekiq
       
-    command: /bin/sh -c "rm -f /app/tmp/pids/server.pid && rake db:migrate && rails s -b '0.0.0.0'; bundle exec sidekiq"
+    command: /bin/sh -c "rm -f /app/tmp/pids/server.pid && rake db:migrate && rails s -b '0.0.0.0'"
 
 
 
