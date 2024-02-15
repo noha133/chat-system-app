@@ -17,7 +17,7 @@ To set up the application, follow these steps:
    docker-compose up --build
 
 ## API Description
-Make sure nothing is running on porta 3307 9200 9300 6379 3000
+Make sure nothing is running on ports 3307 9200 9300 6379 3000
 
 | Action                                                                   | HTTP Verb | Path                                                                        | Parameters  | Body                                                                       | Response                                                |
 |--------------------------------------------------------------------------|-----------|-----------------------------------------------------------------------------|---------------------------------------------|--------------------------------------|---------------------------------------------------------|
