@@ -23,8 +23,7 @@ class ChatsController < ApplicationController
     if application
       key = application.id
       key = key.to_s
-      @redis = Redis.new(url: 'redis://redis_container:6379')
-      chat_number = @redis.incr(key)
+      chat_number = ::REDIS.incr(key)
       ChatJob.perform_async(chat_number, application.id)
       render json: { status: "created" , chat_number: chat_number}, status: :created
     end
