@@ -1,7 +1,12 @@
 my_cron_job:
-  cron: '1 * * * *' # Run every every hour
+  cron: '* * * * *' # Run every every hour
   class: ChatCount # Your Sidekiq worker class
   queue: default # The Sidekiq queue to use
   # args: # Optional arguments for the worker
   #   - arg1
   #   - arg2
+
+my_second_cron_job:
+  cron: '* * * * *' # Run every every hour
+  class: MessageCount # Your Sidekiq worker class
+  queue: default # The Sidekiq queue to use
