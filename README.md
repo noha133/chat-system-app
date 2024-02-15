@@ -4,7 +4,6 @@
 
 # Requirments
 - Docker
-- Docker Compose
 
 ## Installation
 
@@ -15,10 +14,10 @@ To set up the application, follow these steps:
 2. Navigate to the project directory:
    cd <project_directory>
 3. Run the following command :
-   docker-compose --build
+   docker-compose up --build
 
 ## API Description
-
+Make sure nothing is running on porta 3307 9200 9300 6379 3000
 
 | Action                                                                   | HTTP Verb | Path                                                                        | Parameters  | Body                                                                       | Response                                                |
 |--------------------------------------------------------------------------|-----------|-----------------------------------------------------------------------------|---------------------------------------------|--------------------------------------|---------------------------------------------------------|
