@@ -4,8 +4,8 @@ Rails.application.routes.draw do
 
   post '/applications/create/', to: 'apps#create'
   get '/applications/list/', to: 'apps#index'
-  get '/applications/:token', to: 'apps#show'
-  patch '/applications/:token', to: 'apps#update'
+  get '/applications/:token/show', to: 'apps#show'
+  patch '/applications/:token/update', to: 'apps#update'
 
   post '/applications/:token/chats', to: 'chats#create'
   get '/applications/:token/chats', to: 'chats#index'

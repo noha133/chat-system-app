@@ -8,9 +8,9 @@ class AppsController < ApplicationController
   end
 
   def show
-    @application = App.find_by(token: params[:token])
-    if @application
-      render json: @application, status: 200
+    app = App.find_by(token: params[:token])
+    if app
+      render json: {app_name: app.name, chats_count: app.chats_count, created_at: app.created_at}, status: 200
     else 
       render json: {
         error: "App Not Found"
