@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   get '/applications/:token', to: 'apps#show'
   patch '/applications/:token', to: 'apps#update'
 
-  post '/applications/:token/chats/', to: 'chats#create'
+  post '/applications/:token/chats', to: 'chats#create'
   get '/applications/:token/chats', to: 'chats#index'
 
   post '/applications/:token/chats/:chat_number/messages', to: 'messages#create'
