@@ -17,14 +17,19 @@ class AppsController < ApplicationController
 
 
   def create
-    @application = App.new(app_params)
-    @application.token = SecureRandom.hex(16) # Generate a random hex token
+    if params[:name]
+      @application = App.new(app_params)
+      @application.token = SecureRandom.hex(16) # Generate a random hex token
 
-    if @application.save
-      render json: { token: @application.token }, status: :created
-    else
-      render json: @application.errors, status: :unprocessable_entity
+      if @application.save
+        render json: { token: @application.token }, status: :created
+      else
+        render json: @application.errors, status: :unprocessable_entity
+      end
+    else 
+      render json: {error: "Please enter application name"}, status: :unprocessable_entity
     end
+
   end
 
   def update
