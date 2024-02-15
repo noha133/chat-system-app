@@ -16,7 +16,6 @@ class ChatsController < ApplicationController
   end
 
   def create
-
     token = params[:token]
     text = params[:text]
     application = App.find_by(token: token)
@@ -25,7 +24,7 @@ class ChatsController < ApplicationController
       key = key.to_s
       chat_number = ::REDIS.incr(key)
       ChatJob.perform_async(chat_number, application.id)
-      render json: { status: "created" , chat_number: chat_number}, status: :created
+      render json: {chat_number: chat_number}, status: :created
     end
   end
 
