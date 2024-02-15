@@ -2,8 +2,8 @@ Rails.application.routes.draw do
   require 'sidekiq/web'
   mount Sidekiq::Web => '/sidekiq'
 
-  post '/applications', to: 'apps#create'
-  get '/applications', to: 'apps#index'
+  post '/applications/create/', to: 'apps#create'
+  get '/applications/list/', to: 'apps#index'
   get '/applications/:token', to: 'apps#show'
   patch '/applications/:token', to: 'apps#update'
 

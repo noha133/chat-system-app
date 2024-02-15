@@ -1,7 +1,10 @@
 class AppsController < ApplicationController
   def index
     apps = App.all
-    render json: apps
+    if apps 
+      apps = apps.map { |app| { app_name: app.name, chats_count: app.chats_count, created_at: app.created_at}}
+      render json: apps, status: 200
+    end
   end
 
   def show
