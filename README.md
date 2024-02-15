@@ -25,8 +25,8 @@ To set up the application, follow these steps:
 | Get a token for a new application                                        | POST      | /applications?name=:name                                            | :name       |  |                                                                      | :token                             |
 | Get List for all applications                                | GET       | /applications                                        |                                                 |                       | {:app_name, :chats_count, :created_at}                                          |
 | Get an application                                               |GET            | /applications/:token | :token                    |   |  {:app_name, :chats_count, :created_at}
-| update application name    | UPDATE     |    /applications/:token  |  :token  |  {:name} |{:app_name, :chats_count, :created_at} |
-| Create a new chat    | POST   | /applications/:token/chats | :token |  | {:chat_number} |   
+| update application name    | UPDATE     |    /applications/:token  |  :token  |  {:name} |{"app_name", "chats_count", "created_at"} |
+| Create a new chat    | POST   | /applications/:token/chats | :token |  | {"chat_number"} |   
 Get all chat for an application | GET | /applications/:token/chats | :token | | :chat_number :messages_count |
 Create a new message for a chat | POST | '/applications/:token/chats/:chat_number/messages | :token :chat_numbe | |  {"message_number"}
 | Get all messages for a chat | GET | /applications/:token/chats/:chat_number/messages | :token :chat_number |  | {"message_number", "text"} |
