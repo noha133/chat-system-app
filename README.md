@@ -4,7 +4,6 @@
 
 # Requirments
 - Docker
-- Docker Compose
 
 ## Installation
 
@@ -15,17 +14,21 @@ To set up the application, follow these steps:
 2. Navigate to the project directory:
    cd <project_directory>
 3. Run the following command :
-   docker-compose --build
+   docker-compose up --build
 
 ## API Description
-
-If settings kept as default, rails server will run on http://localhost:3000 and hence append that with the paths in the table below.
+Make sure nothing is running on ports 3307 9200 9300 6379 3000
 
 | Action                                                                   | HTTP Verb | Path                                                                        | Parameters  | Body                                                                       | Response                                                |
 |--------------------------------------------------------------------------|-----------|-----------------------------------------------------------------------------|---------------------------------------------|--------------------------------------|---------------------------------------------------------|
-| Get a token for a new application                                        | POST      | /applications/create/?name=:name                                            | :name       |  |                                                                      | :token                             |
-| Get List for all applications                                | GET       | /applications/list                                        |                                                 |                       | {:app_name, :chats_count, :created_at}                                          |
-| Get an application                                               |GET            | /applications/:token/show | :token                    |   |  {:app_name, :chats_count, :created_at}
-| update application name    | UPDATE     |    /applications/:token/update/  |  :token  |  {:name} |{:app_name, :chats_count, :created_at} |
-| Create a new chat    | POST   | /applications/:token/chats/create | :token |  | {:chat_number} |   
-Get all chat for an application | GET | /applications/:token/chats/list | :token | | :chat_number :messages_count |
+| Get a token for a new application                                        | POST      | /applications?name=:name                                            | {"name"}       | |{"token"} |                                                                      | :token                             | 
+| Get List for all applications                                | GET       | /applications                                        |                                                 |                       | {"app_name", "chats_count", "created_at"}                                          |
+| Get an application                                               |GET            | /applications/:token | :token                    |   |  {"app_name", "chats_count", "created_at"}
+| update application name    | UPDATE     |    /applications/:token  |  :token  |  {:name} |{"app_name", "chats_count", "created_at"} |
+| Create a new chat    | POST   | /applications/:token/chats | :token |  | {"chat_number"} |   
+Get all chat for an application | GET | /applications/:token/chats | :token | | {"chat_number" ,"messages_count"} |
+Create a new message for a chat | POST | '/applications/:token/chats/:chat_number/messages | :token :chat_number | |  {"message_number"}
+| Get all messages for a chat | GET | /applications/:token/chats/:chat_number/messages | :token :chat_number |  | {"message_number", "text"} |
+| Search through messages of a chat | GET | /applications/:token/chats/:chat_number/messages/search/:q | :token :chat_number :q | | {}
+
+
