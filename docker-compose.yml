@@ -28,7 +28,16 @@ services:
     container_name: redis_container
     ports:
       - 6379:6379
-    command: redis-server --save 20 1 --loglevel warning --requirepass eYVX7EwVmmxKPCDmwMtyKVge8oLd2t81
+    volumes:
+      - redis:/data
+  sidekiq:
+    build:
+      context: .
+    container_name: sidekiq_container
+    command: bundle exec sidekiq --verbose
+    links:
+      - db
+      - redis
   web:
     build: .
     image: chat_system_rails_image
@@ -38,24 +47,14 @@ services:
     environment:
       REDIS_HOST: redis
       REDIS_PORT: 6379
-      REDIS_PASSWORD: eYVX7EwVmmxKPCDmwMtyKVge8oLd2t81
     volumes: 
             - ".:/app"
     depends_on:
       - db
       - redis
-    command: >
-      /bin/sh -c "
-      rm -f /app/tmp/pids/server.pid && rails s -b '0.0.0.0'"
+    command: /bin/sh -c "rm -f /app/tmp/pids/server.pid && rails s -b '0.0.0.0'; bundle exec sidekiq"
 
-  sidekiq:
-    build:
-      context: .
-    container_name: sidekiq_container
-    command: bundle exec sidekiq 
-    links:
-      - db
-      - redis
+
 
 
 
@@ -63,3 +62,4 @@ services:
 
 volumes:
   mysql_data:
+  redis:

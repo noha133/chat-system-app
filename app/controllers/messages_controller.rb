@@ -4,6 +4,7 @@ class MessagesController < ApplicationController
       chat_number = params[:chat_number]
       text = params[:text]
       MessageJob.perform_async(token, chat_number, text)
+      render json: { status: "created" }, status: :ok
     end
 
 
