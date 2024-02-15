@@ -17,7 +17,9 @@ To set up the application, follow these steps:
    docker-compose up --build
 
 ## API Description
-Make sure nothing is running on ports 3307 9200 9300 6379 3000
+- Make sure nothing is running on ports 3307 9200 9300 6379 3000
+- You can find postman collection in "Chat-System.postman_collection.json"
+
 
 | Action                                                                   | HTTP Verb | Path                                                                        | Parameters  | Body                                                                       | Response                                                |
 |--------------------------------------------------------------------------|-----------|-----------------------------------------------------------------------------|---------------------------------------------|--------------------------------------|---------------------------------------------------------|
@@ -30,5 +32,7 @@ Get all chat for an application | GET | /applications/:token/chats | :token | | 
 Create a new message for a chat | POST | '/applications/:token/chats/:chat_number/messages | :token :chat_number | |  {"message_number"}
 | Get all messages for a chat | GET | /applications/:token/chats/:chat_number/messages | :token :chat_number |  | {"message_number", "text"} |
 | Search through messages of a chat | GET | /applications/:token/chats/:chat_number/messages/search/:q | :token :chat_number :q | | {}
+
+
 
 
