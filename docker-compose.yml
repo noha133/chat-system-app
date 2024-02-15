@@ -38,6 +38,9 @@ services:
     links:
       - db
       - redis
+    depends_on:
+      - db
+      - redis
   web:
     build: .
     image: chat_system_rails_image
@@ -52,6 +55,9 @@ services:
     depends_on:
       - db
       - redis
+      - elasticsearch
+      - sidekiq
+      
     command: /bin/sh -c "rm -f /app/tmp/pids/server.pid && rake db:migrate && rails s -b '0.0.0.0'; bundle exec sidekiq"
 
 
