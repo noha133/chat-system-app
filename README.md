@@ -26,4 +26,6 @@ If settings kept as default, rails server will run on http://localhost:3000 and 
 | Get a token for a new application                                        | POST      | /applications/create/?name=:name                                            | :name       |  |                                                                      | :token                             |
 | Get List for all applications                                | GET       | /applications/list                                        |                                                 |                       | {:app_name, :chats_count, :created_at}                                          |
 | Get an application                                               |GET            | /applications/:token/show | :token                    |   |  {:app_name, :chats_count, :created_at}
-| update application name    | Update     |    /applications/:token/update/  |  :token  |  {:name} |{:app_name, :chats_count, :created_at} |
+| update application name    | UPDATE     |    /applications/:token/update/  |  :token  |  {:name} |{:app_name, :chats_count, :created_at} |
+| Create a new chat    | POST   | /applications/:token/chats/create | :token |  | {:chat_number} |   
+Get all chat for an application | GET | /applications/:token/chats/list | :token | | :chat_number :messages_count |
