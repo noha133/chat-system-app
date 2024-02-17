@@ -21,7 +21,7 @@ class AppsController < ApplicationController
 
   def create
     if params[:name]
-      @application = App.new(app_params)
+      @application = App.new(name: params[:name])
       @application.token = SecureRandom.hex(16) # Generate a random hex token
 
       if @application.save
@@ -37,7 +37,7 @@ class AppsController < ApplicationController
 
   def update
     app = App.find_by(token: params[:token])
-    if app.update(app_params)
+    if app && app.update(app_params)
       render json: {app_name: app.name, chats_count: app.chats_count, created_at: app.created_at}, status: 200
     else
       render json: {

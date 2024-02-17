@@ -25,6 +25,8 @@ class ChatsController < ApplicationController
       chat_number = ::REDIS.incr(key)
       ChatJob.perform_async(chat_number, application.id)
       render json: {chat_number: chat_number}, status: :created
+    else
+      render json: { error: 'App not found' }, status: :not_found
     end
   end
 
