@@ -14,7 +14,7 @@ To set up the application, follow these steps:
 2. Navigate to the project directory:
    cd <project_directory>
 3. Run the following command :
-   docker-compose up --build
+   docker-compose up
 
 ## API Description
 - Make sure nothing is running on ports 3307 9200 9300 6379 3000
@@ -31,7 +31,7 @@ To set up the application, follow these steps:
 Get all chat for an application | GET | /applications/:token/chats | :token | | {"chat_number" ,"messages_count"} |
 Create a new message for a chat | POST | '/applications/:token/chats/:chat_number/messages | :token :chat_number | |  {"message_number"}
 | Get all messages for a chat | GET | /applications/:token/chats/:chat_number/messages | :token :chat_number |  | {"message_number", "text"} |
-| Search through messages of a chat | GET | /applications/:token/chats/:chat_number/messages/search/:q | :token :chat_number :q | | {}
+| Search through messages of a chat | GET | /applications/:token/chats/:chat_number/messages/search/:q | :token :chat_number :q | | {"message_number","text"}
 
 
 
