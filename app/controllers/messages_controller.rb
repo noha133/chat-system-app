@@ -7,8 +7,9 @@ class MessagesController < ApplicationController
       if application
           chat = Chat.find_by(app: application ,chat_number: chat_number)
           if chat
-            key = chat.id
-            key = key.to_s
+            chat_id = chat.id
+            chat_id = chat_id.to_s
+            key = "chat" + chat_id
             message_number = ::REDIS.incr(key)
             MessageJob.perform_async(message_number,chat.id, text)
             render json: { message_number: message_number }, status: :created
