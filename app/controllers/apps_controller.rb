@@ -14,7 +14,7 @@ class AppsController < ApplicationController
     else 
       render json: {
         error: "App Not Found"
-      }
+      }, status: :not_found
     end
   end
 
@@ -42,7 +42,7 @@ class AppsController < ApplicationController
     else
       render json: {
         error: "App Not Found"
-      }
+      }, status: :not_found
     end
   end
   
